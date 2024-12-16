@@ -16,6 +16,7 @@ import {
 } from "@/features/api/authApi";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 const Login = () => {
   const [loginInput, setLoginInput] = useState({ email: "", password: "" });
   const [signupInput, setSignupInput] = useState({
@@ -57,7 +58,20 @@ const Login = () => {
     console.log(inputData);
   };
 
-  useEffect(() => {}, [
+  useEffect(() => {
+    if (registerData && registerIsSuccess) {
+      toast.success(registerData.message || "Signup Successfull...");
+    }
+    if (registerError) {
+      toast.error(registerData.data.message || "Signup Failed");
+    }
+    if (loginData && LoginIsSuccess) {
+      toast.success(loginData.message || "Login Successfull...");
+    }
+    if (loginError) {
+      toast.error(loginData.data.message || "Login Failed");
+    }
+  }, [
     loginIsLoading,
     registerIsLoading,
     loginData,
