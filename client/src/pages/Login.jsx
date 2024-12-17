@@ -81,7 +81,7 @@ const Login = () => {
   ]);
 
   return (
-    <div className="flex items-center w-full justify-center">
+    <div className="flex items-center w-full justify-center mt-20">
       <Tabs
         defaultValue="account"
         className="w-[400px]"
@@ -175,6 +175,7 @@ const Login = () => {
                   onChange={(e) => changeInputHandler(e, "login")}
                   name="password"
                   value={loginInput.password}
+                  placeholder="Enter your password"
                   type="password"
                 />
               </div>
